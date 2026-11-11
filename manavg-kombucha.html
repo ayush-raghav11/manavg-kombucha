@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ManavG Kombucha | Brewed in Rishikesh</title>
+<meta name="description" content="ManavG Kombucha: small-batch kombucha brewed in Rishikesh with pure filtered water and Himalayan herbs, made under strict quality control.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f8f6;          /* glacier mist */
+    --ink:#122a2e;
+    --muted:#52696c;
+    --ganga:#0f4c5c;       /* deep river */
+    --ganga-d:#0a3340;
+    --river:#1b8a96;       /* flowing water */
+    --herb:#3f7d4e;        /* himalayan herbs */
+    --saffron:#e08a1e;     /* aarti / saffron */
+    --sand:#efe7d3;        /* river sand */
+    --card:#ffffff;
+    --line:#d9e5e1;
+    --radius:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;color:var(--ganga-d)}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1120px,92%);margin-inline:auto}
+  section{padding:88px 0}
+  .eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--saffron);font-weight:600;margin-bottom:12px}
+  h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:14px}
+  .lead{color:var(--muted);max-width:640px;font-size:1.05rem}
+  .btn{display:inline-block;padding:14px 28px;border-radius:999px;font-weight:600;font-size:.95rem;transition:.25s;border:2px solid transparent;cursor:pointer;font-family:inherit}
+  .btn-primary{background:var(--ganga);color:#fff}
+  .btn-primary:hover{background:var(--river);transform:translateY(-2px)}
+  .btn-ghost{border-color:var(--ganga);color:var(--ganga)}
+  .btn-ghost:hover{background:var(--ganga);color:#fff}
+  .btn-saffron{background:var(--saffron);color:#fff}
+  .btn-saffron:hover{background:#c97712;transform:translateY(-2px)}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(243,248,246,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{font-family:Fraunces,serif;font-weight:700;font-size:1.5rem;color:var(--ganga-d);display:flex;align-items:center;gap:8px}
+  .logo span{color:var(--saffron)}
+  .links{display:flex;gap:28px;align-items:center;font-size:.93rem;font-weight:500}
+  .links a:hover{color:var(--river)}
+  .menu-btn{display:none;background:none;border:0;font-size:1.7rem;cursor:pointer;color:var(--ganga-d)}
+
+  /* hero */
+  .hero{position:relative;padding:76px 0 150px;color:#fff;overflow:hidden;
+    background:linear-gradient(180deg,#0a3340 0%,#0f4c5c 45%,#1b8a96 100%)}
+  .hero::before{content:"";position:absolute;top:-80px;right:-60px;width:380px;height:380px;border-radius:50%;
+    background:radial-gradient(circle,#ffd28a 0%,rgba(224,138,30,.35) 45%,transparent 70%)}
+  .hero .mount{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;display:block}
+  .hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+  .hero h1{font-size:clamp(2.3rem,5.6vw,3.9rem);margin-bottom:20px;color:#fff}
+  .hero h1 em{color:#ffc772;font-style:normal}
+  .hero .eyebrow{color:#ffc772}
+  .hero p{color:rgba(255,255,255,.85);font-size:1.1rem;max-width:520px;margin-bottom:30px}
+  .hindi{font-family:'Noto Sans Devanagari',sans-serif;font-weight:500;color:#ffc772;margin-bottom:22px;font-size:1.05rem}
+  .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero .btn-ghost{border-color:#fff;color:#fff}
+  .hero .btn-ghost:hover{background:#fff;color:var(--ganga)}
+  .badges{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap;font-size:.86rem;color:rgba(255,255,255,.85)}
+  .badges b{color:#fff}
+  .art{display:flex;justify-content:center}
+  .art svg{width:min(330px,85%);filter:drop-shadow(0 25px 35px rgba(0,0,0,.35));animation:float 6s ease-in-out infinite}
+  @keyframes float{50%{transform:translateY(-12px)}}
+
+  /* stats */
+  .stats{background:var(--ganga-d);color:#fff;padding:44px 0}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .stats strong{display:block;font-family:Fraunces,serif;font-size:2.2rem;color:#ffc772}
+  .stats span{font-size:.88rem;opacity:.85}
+
+  /* origin */
+  .origin-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .origin-card{background:linear-gradient(160deg,var(--sand),#e4efe9);border:1px solid var(--line);border-radius:var(--radius);padding:38px;position:relative;overflow:hidden}
+  .origin-card::after{content:"";position:absolute;right:-40px;bottom:-40px;width:180px;height:180px;border-radius:50%;background:rgba(27,138,150,.12)}
+  .origin-card h3{font-size:1.4rem;margin-bottom:16px}
+  .origin-card ul{list-style:none;display:grid;gap:14px;position:relative;z-index:1}
+  .origin-card li{display:flex;gap:12px;font-size:.96rem}
+  .origin-card li b{color:var(--ganga-d)}
+  .origin-card li::before{content:"〰";color:var(--river);flex:none}
+
+  /* herbs */
+  .herbs{background:var(--sand)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px}
+  .herb-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .herb-row span{background:#fff;border:1px solid var(--line);padding:10px 20px;border-radius:999px;font-weight:500;font-size:.93rem;color:var(--ganga-d)}
+  .herb-row span::before{content:"🌿 "}
+
+  /* cards */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px;transition:.3s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,76,92,.12)}
+  .dot{width:54px;height:54px;border-radius:16px;margin-bottom:18px;display:grid;place-items:center;font-size:1.6rem}
+  .card h3{font-size:1.28rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.95rem}
+  .tag{display:inline-block;margin-top:14px;font-size:.78rem;background:#e4efe9;padding:4px 12px;border-radius:999px;color:var(--ganga-d);font-weight:600}
+
+  /* process */
+  .process{background:linear-gradient(180deg,var(--bg),#e4efe9)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:46px;counter-reset:s}
+  .step{background:#fff;border-radius:var(--radius);padding:28px 24px;border:1px solid var(--line);border-top:4px solid var(--river)}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:Fraunces,serif;font-size:2.3rem;color:var(--saffron);display:block;margin-bottom:8px}
+  .step h3{font-size:1.15rem;margin-bottom:8px}
+  .step p{font-size:.92rem;color:var(--muted)}
+
+  /* quality */
+  .q-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .checks{list-style:none;margin-top:26px;display:grid;gap:16px}
+  .checks li{display:flex;gap:14px;align-items:flex-start}
+  .checks i{flex:none;width:28px;height:28px;border-radius:50%;background:var(--herb);color:#fff;display:grid;place-items:center;font-style:normal;font-size:.85rem;margin-top:2px}
+  .checks b{display:block;color:var(--ganga-d)}
+  .checks span{color:var(--muted);font-size:.93rem}
+  .panel{background:linear-gradient(160deg,var(--ganga-d),var(--ganga));color:#fff;border-radius:var(--radius);padding:38px}
+  .panel h3{color:#ffc772;margin-bottom:18px;font-size:1.4rem}
+  .panel dl{display:grid;gap:14px}
+  .panel div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:12px;font-size:.95rem}
+  .panel dt{opacity:.8}
+  .panel dd{font-weight:600;text-align:right}
+
+  /* reviews */
+  .quotes{background:var(--sand)}
+  .quotes .card p{font-style:italic;font-size:1rem;color:var(--ink)}
+  .quotes small{display:block;margin-top:16px;color:var(--muted);font-weight:600}
+
+  /* contact */
+  .contact{background:linear-gradient(135deg,var(--river) 0%,var(--ganga-d) 100%);color:#fff}
+  .contact h2{color:#fff}
+  .contact .eyebrow{color:#ffc772}
+  .contact .lead{color:rgba(255,255,255,.82)}
+  .c-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  form{background:#fff;border-radius:var(--radius);padding:32px;display:grid;gap:14px}
+  input,select,textarea{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font:inherit;background:var(--bg);color:var(--ink)}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--saffron);border-color:transparent}
+  textarea{min-height:100px;resize:vertical}
+  .info{margin-top:28px;display:grid;gap:10px;font-size:.98rem}
+  .ok{display:none;color:var(--herb);font-weight:600;text-align:center}
+
+  footer{background:#071f27;color:#a9bfc2;padding:34px 0;font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  @media(max-width:900px){
+    .hero-grid,.q-grid,.c-grid,.origin-grid{grid-template-columns:1fr}
+    .grid3{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .stats .wrap{grid-template-columns:1fr 1fr}
+    .art{order:-1}
+    .hero{padding-bottom:110px}
+    section{padding:64px 0}
+    .menu-btn{display:block}
+    .links{display:none;position:absolute;top:70px;left:0;right:0;background:var(--bg);flex-direction:column;padding:24px;border-bottom:1px solid var(--line)}
+    .links.open{display:flex}
+  }
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">Manav<span>G</span></a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('links').classList.toggle('open')">☰</button>
+    <div class="links" id="links">
+      <a href="#origin">Rishikesh</a>
+      <a href="#herbs">Himalayan Herbs</a>
+      <a href="#flavours">Flavours</a>
+      <a href="#quality">Quality</a>
+      <a href="#contact" class="btn btn-primary" style="padding:10px 22px">Order / Enquire</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Brewed in Rishikesh · Small-batch</div>
+      <p class="hindi">गंगा की शुद्धता · हिमालय की जड़ी-बूटियाँ</p>
+      <h1>Pure as the Ganga. <em>Rooted in the Himalayas.</em></h1>
+      <p>ManavG Kombucha is slow-fermented at the foothills of the Himalayas, with real tea, a living SCOBY and mountain herbs, and tested carefully before it reaches your glass.</p>
+      <div class="cta">
+        <a href="#flavours" class="btn btn-saffron">Explore Flavours</a>
+        <a href="#quality" class="btn btn-ghost">Our Quality Promise</a>
+      </div>
+      <div class="badges">
+        <span>💧 <b>Multi-stage filtered</b> water</span>
+        <span>🌿 <b>Himalayan</b> herbs</span>
+        <span>🧪 <b>Batch-tested</b></span>
+      </div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="150" cy="402" rx="95" ry="11" fill="#000" opacity=".25"/>
+        <rect x="122" y="18" width="56" height="26" rx="6" fill="#e08a1e"/>
+        <path d="M128 44h44v62c0 22 52 40 52 90v190c0 12-10 20-22 20H98c-12 0-22-8-22-20V196c0-50 52-68 52-90z" fill="#d9a441"/>
+        <path d="M128 44h44v62c0 22 52 40 52 90v30H76v-30c0-50 52-68 52-90z" fill="#ffd98a" opacity=".5"/>
+        <rect x="90" y="224" width="120" height="132" rx="14" fill="#f3f8f6"/>
+        <path d="M90 262l24-26 18 16 20-30 26 34 32-14v60H90z" fill="#1b8a96" opacity=".25"/>
+        <text x="150" y="266" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="22" fill="#0a3340">ManavG</text>
+        <text x="150" y="286" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" letter-spacing="2.5" fill="#e08a1e">KOMBUCHA</text>
+        <path d="M108 312c10-10 20-10 30 0s20 10 30 0 20-10 24 0" stroke="#0f4c5c" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <text x="150" y="340" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" letter-spacing="2" fill="#52696c">RISHIKESH</text>
+        <circle cx="116" cy="150" r="5" fill="#fff" opacity=".6"/><circle cx="188" cy="190" r="4" fill="#fff" opacity=".5"/><circle cx="140" cy="205" r="3" fill="#fff" opacity=".6"/>
+      </svg>
+    </div>
+  </div>
+  <svg class="mount" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 150 L180 60 L300 120 L470 20 L640 130 L800 50 L980 125 L1150 40 L1300 110 L1440 70 L1440 220 L0 220Z" fill="#0a3340" opacity=".55"/>
+    <path d="M0 175 L150 110 L320 160 L520 90 L700 165 L900 105 L1100 170 L1280 115 L1440 160 L1440 220 L0 220Z" fill="#1b6f7c" opacity=".8"/>
+    <path d="M0 200 C240 170 420 230 720 200 S1220 170 1440 200 L1440 220 L0 220Z" fill="#f3f8f6"/>
+  </svg>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div><strong>7–14</strong><span>days of slow fermentation</span></div>
+    <div><strong>100%</strong><span>batches quality-checked</span></div>
+    <div><strong>6</strong><span>Himalayan-inspired flavours</span></div>
+    <div><strong>0</strong><span>artificial colours</span></div>
+  </div>
+</div>
+
+<section id="origin">
+  <div class="wrap origin-grid">
+    <div>
+      <div class="eyebrow">Our Home</div>
+      <h2>Brewed where the Ganga leaves the mountains</h2>
+      <p class="lead">Rishikesh sits where the Ganga leaves the Himalayan foothills and enters the plains. Clean air, cool mornings and a deep tradition of mindful living shape how we brew: unhurried, careful and honest.</p>
+      <p class="lead" style="margin-top:14px">Our brewery in Rishikesh combines that spirit with modern food-safety practice, so tradition and quality go in together.</p>
+    </div>
+    <div class="origin-card">
+      <h3>Why Rishikesh</h3>
+      <ul>
+        <li><div><b>Cool, clean foothill climate</b><br>Steady conditions suit slow, controlled fermentation.</div></li>
+        <li><div><b>Pure water, treated with care</b><br>Multi-stage filtration and testing before every brew, inspired by the clarity of the Ganga.</div></li>
+        <li><div><b>Close to Himalayan herbs</b><br>Short supply routes from hill growers to our brew house.</div></li>
+        <li><div><b>A culture of mindful living</b><br>The yoga capital's calm shapes our unhurried craft.</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="herbs" id="herbs">
+  <div class="wrap">
+    <div class="eyebrow">From the Mountains</div>
+    <h2>Himalayan herbs, brewed in</h2>
+    <p class="lead">Herbs long used in Indian kitchens and Ayurvedic tradition, lending each flavour its character.</p>
+    <div class="herb-row">
+      <span>Tulsi (Holy Basil)</span><span>Brahmi</span><span>Giloy</span><span>Burans (Rhododendron)</span><span>Sea Buckthorn</span><span>Ginger &amp; Turmeric</span><span>Mint</span>
+    </div>
+  </div>
+</section>
+
+<section id="flavours">
+  <div class="wrap">
+    <div class="eyebrow">The Range</div>
+    <h2>Flavours of the Himalayas</h2>
+    <p class="lead">Crisp, lightly sparkling and balanced, every flavour starts from the same carefully brewed tea base.</p>
+    <div class="grid3">
+      <article class="card"><div class="dot" style="background:#dcefd9">🌿</div><h3>Tulsi Ginger</h3><p>Warm ginger and aromatic holy basil, a refreshing signature blend.</p><span class="tag">Signature</span></article>
+      <article class="card"><div class="dot" style="background:#fbdada">🌺</div><h3>Burans Berry</h3><p>Tart Himalayan rhododendron petals with ripe berries and a gentle fizz.</p><span class="tag">Floral</span></article>
+      <article class="card"><div class="dot" style="background:#ffe6b8">🍊</div><h3>Sea Buckthorn Citrus</h3><p>Bright, tangy and vivid, a mountain berry with a citrus lift.</p><span class="tag">Zesty</span></article>
+      <article class="card"><div class="dot" style="background:#fdeaa9">✨</div><h3>Giloy Turmeric</h3><p>Earthy golden turmeric with a hint of giloy and black pepper.</p><span class="tag">Earthy</span></article>
+      <article class="card"><div class="dot" style="background:#d5eee9">🍃</div><h3>Brahmi Mint</h3><p>Cooling mint and gentle brahmi over delicate green tea.</p><span class="tag">Cooling</span></article>
+      <article class="card"><div class="dot" style="background:#efe5d0">🫖</div><h3>Original Himalayan Tea</h3><p>The pure expression: bold tea, subtle acidity, nothing extra.</p><span class="tag">Pure</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="eyebrow">Our Process</div>
+    <h2>From mountain herb to sealed bottle</h2>
+    <p class="lead">Consistency comes from a controlled, documented process, not luck.</p>
+    <div class="steps">
+      <div class="step"><h3>Filter &amp; Brew</h3><p>Multi-stage filtered water, premium tea and measured sugar, steeped at controlled temperature.</p></div>
+      <div class="step"><h3>Ferment</h3><p>A healthy SCOBY ferments in food-grade vessels, with pH and temperature logged daily.</p></div>
+      <div class="step"><h3>Infuse Herbs</h3><p>Himalayan herbs and fruit go into a second fermentation for flavour and natural fizz.</p></div>
+      <div class="step"><h3>Test, Bottle, Seal</h3><p>Each batch is checked before filling sanitised glass bottles and sealing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="quality">
+  <div class="wrap q-grid">
+    <div>
+      <div class="eyebrow">Quality Manufacturing</div>
+      <h2>Quality isn't a step. It's every step.</h2>
+      <p class="lead">Our Rishikesh facility is designed around hygiene, traceability and repeatability.</p>
+      <ul class="checks">
+        <li><i>✓</i><div><b>Hygienic, food-grade facility</b><span>Stainless steel and glass equipment, with documented cleaning schedules.</span></div></li>
+        <li><i>✓</i><div><b>Water purity control</b><span>Multi-stage filtration with regular water testing before every brew.</span></div></li>
+        <li><i>✓</i><div><b>Batch traceability</b><span>Every bottle carries a batch code linked to herbs, ingredients and test records.</span></div></li>
+        <li><i>✓</i><div><b>pH &amp; alcohol monitoring</b><span>Regular testing keeps each batch safe, stable and within specification.</span></div></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Quality at a glance</h3>
+      <dl>
+        <div><dt>Brewed in</dt><dd>Rishikesh, Uttarakhand</dd></div>
+        <div><dt>Licence</dt><dd>FSSAI No. XXXXXXXXXXXX</dd></div>
+        <div><dt>Target pH</dt><dd>2.5 – 3.5</dd></div>
+        <div><dt>Fermentation</dt><dd>7 – 14 days</dd></div>
+        <div><dt>Packaging</dt><dd>Sanitised glass</dd></div>
+        <div><dt>Testing</dt><dd>Every batch</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="quotes" id="reviews">
+  <div class="wrap">
+    <div class="eyebrow">Reviews</div>
+    <h2>What customers say</h2>
+    <div class="grid3">
+      <article class="card"><p>“Clean, crisp and consistent. The Tulsi Ginger is my daily go-to.”</p><small>Sample Customer, City</small></article>
+      <article class="card"><p>“Our yoga studio guests love the Burans Berry. Premium and refreshing.”</p><small>Sample Studio Owner, Rishikesh</small></article>
+      <article class="card"><p>“Great fizz, not too sweet, and you can taste the herbs.”</p><small>Sample Customer, City</small></article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap c-grid">
+    <div>
+      <div class="eyebrow">Get in touch</div>
+      <h2>Bulk orders, retail &amp; partnerships</h2>
+      <p class="lead">Stocking cafés, yoga studios, resorts, gyms or stores? Tell us what you need and we'll reply within one business day.</p>
+      <div class="info">
+        <div>📍 ManavG Brewery, Rishikesh, Uttarakhand</div>
+        <div>📞 +91 00000 00000</div>
+        <div>✉️ hello@manavg.example</div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault();this.reset();document.getElementById('ok').style.display='block'">
+      <input required placeholder="Your name">
+      <input required type="email" placeholder="Email">
+      <select aria-label="Enquiry type"><option>Retail / Café order</option><option>Bulk / Wholesale</option><option>Resort / Studio / Events</option><option>Other</option></select>
+      <textarea placeholder="Tell us what you need"></textarea>
+      <button class="btn btn-primary" type="submit">Send Enquiry</button>
+      <p class="ok" id="ok">Thank you! We'll be in touch soon.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 ManavG Kombucha · Rishikesh, India</span>
+    <span>Kombucha is a fermented tea beverage. Not a substitute for medical advice.</span>
+  </div>
+</footer>
+</body>
+</html>
